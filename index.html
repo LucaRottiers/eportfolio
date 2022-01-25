@@ -14,11 +14,13 @@
 
     <!-- Main CSS -->
 	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="media.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100" rel="stylesheet">
 </head>
 
 <body class="page-home loaded showMyname">
@@ -61,25 +63,7 @@
                 <span>Scroll</span>
             </span>
         </span>
-
-        <a href="#" class="scrolltop hidden-sm-down" style="transform: matrix(0, 1, -1, 0, 0, 0); opacity: 1;">
-            <i class="arrow">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 17 10">
-                    <path class="cls-1" d="M6.22,8.75,3.37,5.89H17V4.12H3.37L6.22,1.25,5,0,0,5l5,5Z"></path>
-                </svg>
-            </i>
-            <span class="txt">
-                <span>t</span>
-                <span>o</span>
-                <span>p</span>
-            </span>
-        </a>
     </header>
-
-    <div id="menu">
-        <div class="menu-container">
-        </div>
-    </div>
 
     <div class="loader">
         <div class="color"></div>
@@ -87,15 +71,15 @@
 
     <div class="app">
         <div class="page-container" style="margin-bottom: 189px;">
-            <main class="page" data-class="page-home" data-wp-title="Agency" data-href="https://www.wokine.com/en/">
+            <main class="page" data-class="page-home">
                 <div class="intro">
                     <section class="myname" style="transform: matrix(1, 0, 0, 1, 0, 0);">
                         <div class="padding">
                             <h1>
-                                <div>
+                                <div class="luca">
                                     <span style="transform: translate(0%, 100%) matrix(1, 0, 0, 1, 0, 0);">Luca</span>
                                 </div>
-                                <div>
+                                <div class="rottiers">
                                     <span style="transform: translate(0%, 100%) matrix(1, 0, 0, 1, 0, 0);">Rottiers</span>
                                 </div>
                             </h1>
@@ -120,20 +104,20 @@
                     <section class="preambule" style="transform: matrix(1, 0, 0, 1, 0, 0);">
                         <div class="padding">
                             <span class="block-title waiting">
-                                <i class="icon waves">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7"
-                                        viewBox="0 0 73.94 14.19">
-                                        <polyline
-                                            points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83"
-                                            style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                                <i class="connector">
+                                    <svg xmlns="http://www.w3.org/2000/svg">
+                                        <path d="m-46 3 6 0L14 3 14 1 22-2 34-2 34 14 22 14 14 11 14 9 2 9-46 9M35-1 45-1 45 13 35 13 35 11 43 11 43 1 35 1 35-1M35 2 42 2 42 4 35 4M35 5 42 5 42 7 35 7M35 10 42 10 42 8 35 8"></path>
                                     </svg>
                                 </i>
-                                <span class="mskd" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><span
-                                        class="txt">Student System and Network Management</span></span>
-                            </span>
+                                <span class="txt">Student System and Network Management</span>
+                            <p>
+                                <div class="qualities_container">
+                                    <div class="qualities"></div>
+                                </div>
+                            </p>
                             <p>
                                 <div style="display: block; text-align: start; position: relative;">
-                                    <span style="transform: matrix(1, 0, 0, 1, 0, 0);">
+                                    <span>
                                         <strong>Sample Text Sample Text Sample Text Sample Text</strong>
                                     </span>
                                 </div>
@@ -143,11 +127,8 @@
                 </div>
                 <div class="video-container">
                     <img class="img-fluid"
-                        src="https://www.wokine.com/wp-content/themes/wokine/temp/home/video-visuel.jpg" alt="visuel"
-                        size="100w" srcset="
-		  		https://www.wokine.com/wp-content/themes/wokine/assets/pages/home/video-visuel-large.jpg,
-		  		https://www.wokine.com/wp-content/themes/wokine/assets/pages/home/video-visuel.jpg 1400w,
-		  		https://www.wokine.com/wp-content/themes/wokine/assets/pages/home/video-visuel-mobile.jpg 600w">
+                        src="/img/interconnection-services-scaled.jpg" alt="cables-banner"
+                        size="100w">
                 </div>
                 <section class="vision animated">
                     <div class="padding">
@@ -225,6 +206,8 @@
         src="https://vars.hotjar.com/box-21ccaa45726c0f3c8c458f7a87eb2298.html"
         style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;">
     </iframe>
+
+    <script src = "Index.js"></script>
 </body>
 
 </html>
