@@ -1,7 +1,6 @@
 // ——————————————————————————————————————————————————
 // TextScramble
 // ——————————————————————————————————————————————————
-
 class TextScramble {
   constructor(el) {
     this.el = el;
@@ -78,3 +77,38 @@ const next = () => {
 next();
 
 // ——————————————————————————————————————————————————
+// Name amination
+// ——————————————————————————————————————————————————
+anime({
+  targets: "#luca-animated path",
+  strokeDashoffset: [anime.setDashoffset, 0],
+  easing: "easeInOutSine",
+  duration: 1500,
+  delay: function (el, i) {
+    return i * 350;
+  },
+  direction: "alternate",
+  loop: true,
+});
+
+// ——————————————————————————————————————————————————
+// preambule animation
+// ——————————————————————————————————————————————————
+var preambuleAnimation = anime({
+  targets: ".myname",
+  width: "195%",
+  easing: "cubicBezier(.25, .75, 0.43, 1.0)",
+  duration: 2500,
+  direction: "normal",
+  loop: false,
+  autoplay: false,
+});
+
+var lastScrollTop = 0;
+window.addEventListener("scroll", function(){ 
+   var st = window.pageYOffset;
+   if (st > lastScrollTop){
+    preambuleAnimation.play(window.pageYOffset * 2);
+   }
+   lastScrollTop = st <= 0 ? 0 : st;
+}, { once: true });
