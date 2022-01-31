@@ -15,6 +15,7 @@
   <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="media.css">
+  <link rel="stylesheet" href="timeline.scss">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,6 +28,12 @@
   <!--Libraries-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
     integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
@@ -76,19 +83,13 @@
     <div class="page-container" style="margin-bottom: 189px;">
       <main class="page" data-class="page-home">
         <div class="intro">
-          <section class="myname" style="transform: matrix(1, 0, 0, 1, 0, 0);">
-            <div class="padding">
-              <h1>
-                <div class="luca">
-                  <div class='console-container'>
-                    <span id='text'></span>
-                    <div class='console-underscore' id='console'>&#95;</div>
-                  </div>
-                </div>
-                <div class="rottiers">
-                </div>
-              </h1>
-            </div>
+          <section id="mynameid" class="myname" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+            <h1>
+              <div id="console-id" class='console-container show'>
+                <span id='text'></span>
+                <div class='console-underscore' id='console'>&#95;</div>
+              </div>
+            </h1>
             <span class="myname-scrolldown" style="bottom: 90px;">
               <i class="arrow"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="28" viewBox="0 0 17 10">
                   <path class="cls-1" d="M6.22,8.75,3.37,5.89H17V4.12H3.37L6.22,1.25,5,0,0,5l5,5Z">
@@ -105,42 +106,43 @@
             </span>
             <div class="page-color"></div>
           </section>
-          <section class="preambule" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+          <section class="preambule">
             <div class="padding">
-              <span class="block-title">
+              <span id="block-title-id" class="block-title hide">
                 <span class="txt">Student System and Network Management</span>
                 <p>
-                  <div class="qualities_container">
-                    <div class="qualities"></div>
-                  </div>
+                <div class="qualities_container">
+                  <div class="qualities"></div>
+                </div>
                 </p>
                 <p>
-                  <div style="display: block; text-align: start; position: relative;">
-                    <span>
-                      <strong>Ik studeer toegepaste informatica aan HoGent en heb een grote passie voor IT.</strong>
+                <div style="display: block; text-align: start; position: relative;">
+                  <span>
+                    <strong>Ik studeer toegepaste informatica aan HoGent en heb een grote passie voor IT.</strong>
 
-                      Al van toen ik klein was was ik gefascineerd door computers, hoe computers werken en wat je met
-                      computers allemaal kan doen. Deze fascinatie zet ik graag verder in mijn job.
+                    Al van toen ik klein was was ik gefascineerd door computers, hoe computers werken en wat je met
+                    computers allemaal kan doen. Deze fascinatie zet ik graag verder in mijn job.
 
-                      Één van mijn beste kwaliteiten is het feit dat ik altijd bereid ben om nieuwe dingen bij te leren en
-                      mezelf te verbeteren. Dit doe ik door niet alleen tijdens school, maar ook buiten school bezig te
-                      zijn met IT. Ik leer enorm veel bij door youtube tutorials te kijken, podcasts te luisteren of
-                      simpelweg te surfen op het internet. Daarnaast kan ik zowel zelfstandig als in team aan projecten
-                      werken, het is natuurlijk veel leuker om in team te werken omdat je dan nieuwe mensen leert kennen.
-                      Zo kende niemand van onze groep elkaar in het begin van projecten ll terwijl we elkaar nu beschouwen
-                      als goede vrienden.
+                    Één van mijn beste kwaliteiten is het feit dat ik altijd bereid ben om nieuwe dingen bij te leren en
+                    mezelf te verbeteren. Dit doe ik door niet alleen tijdens school, maar ook buiten school bezig te
+                    zijn met IT. Ik leer enorm veel bij door youtube tutorials te kijken, podcasts te luisteren of
+                    simpelweg te surfen op het internet. Daarnaast kan ik zowel zelfstandig als in team aan projecten
+                    werken, het is natuurlijk veel leuker om in team te werken omdat je dan nieuwe mensen leert kennen.
+                    Zo kende niemand van onze groep elkaar in het begin van projecten ll terwijl we elkaar nu beschouwen
+                    als goede vrienden.
 
-                      Ik hoop dat ik later nog veel mensen leer kennen op die manier.</strong>
-                    </span>
-                  </div>
+                    Ik hoop dat ik later nog veel mensen leer kennen op die manier.</strong>
+                  </span>
+                </div>
                 </p>
+              </span>
             </div>
           </section>
         </div>
         <div class="video-container">
           <img class="img-fluid" src="/img/interconnection-services-scaled.jpg" alt="cables-banner" size="100w">
         </div>
-        <section class="vision animated">
+        <section class="projects">
           <div class="padding">
             <h2>
               <span class="txt">
@@ -154,23 +156,44 @@
                 </div>
               </span>
             </h2>
-            <div class="block-content">
-              <p class="intro">
-              <div style="display: block; text-align: start; position: relative;"><span
-                  style="transform: translate(0%, 100%) matrix(1, 0, 0, 1, 0, 0);"> An
-                  <i>overview</i></span></div>
-              <div style="display: block; text-align: start; position: relative;"><span
-                  style="transform: translate(0%, 100%) matrix(1, 0, 0, 1, 0, 0);"> of your digital
-                </span></div>
-              <div style="display: block; text-align: start; position: relative;"><span
-                  style="transform: translate(0%, 100%) matrix(1, 0, 0, 1, 0, 0);">strategy<span
-                    class="dot">.</span></span></div>
-              </p>
-              <p style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 60);">A key component of your
-                transformation, your digital strategy requires special attention. We provide you with
-                the support you need all during your project. Through regular workshops, brainstormings
-                and idea sharing, we help grow your initial idea into a cutting-edge digital solution.
-              </p>
+          </div>
+          <div class="container">
+            <div class="timeline">
+              <div class="line"></div>
+        
+              <div class="section">
+                <div class="bead"></div>
+                <div class="content">
+                  <h4>Feb 2022 - June 2022</h4>
+                  <h3>Internship at Colruyt Group</h3>
+                  <p>
+                    Wrote scripts to gather data from different Linux servers. Set up automation services so data can be queried periodically. 
+                    Worked on compiling this data and presenting it in useful dashboards.
+                  </p>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="bead"></div>
+                <div class="content">
+                  <h4>Oct 2021 - Jan 2022</h4>
+                  <h3>DevOps Project Hier</h3>
+                  <p>
+                    As a part of the operations team within the DevOps project. We created a fully functioning environment for a web application in the cloud.
+                    This consisted of creating a test environment locally, building an acceptance environment in the cloud and deploying it to production after sufficient testing.
+                    All these environments were fully automated using ansible playbooks and jenkins pipelines for continuous integration.
+                  </p>
+                </div>
+              </div>
+        
+              <div class="section">
+                <div class="bead"></div>
+                <div class="content">
+                  <h4>Sep 2018 - Dec 2018 (4 months)</h4>
+                  <h3>Product Designer Internship</h3>
+                  <p>Build user interfaces and tested the user experience for the application. Worked on building the design perspective of the applications hosted to provide real-time Elasticsearch experience.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
