@@ -78,76 +78,160 @@ next();
 
 // ——————————————————————————————————————————————————
 // Name amination
-// —————————————————————————————————————————————————— 
-consoleText(['Luca', 'Rottiers'], 'text',['Black']);
+// ——————————————————————————————————————————————————
+consoleText(["Luca", "Rottiers"], "text", ["Black"]);
 
 function consoleText(words, id, colors) {
-  if (colors === undefined) colors = ['#fff'];
+  if (colors === undefined) colors = ["#fff"];
   var visible = true;
-  var con = document.getElementById('console');
+  var con = document.getElementById("console");
   var letterCount = 1;
   var x = 1;
   var waiting = false;
-  var target = document.getElementById(id)
-  target.setAttribute('style', 'color:' + colors[0])
-  window.setInterval(function() {
-
+  var target = document.getElementById(id);
+  target.setAttribute("style", "color:" + colors[0]);
+  window.setInterval(function () {
     if (letterCount === 0 && waiting === false) {
       waiting = true;
-      target.innerHTML = words[0].substring(0, letterCount)
-      window.setTimeout(function() {
+      target.innerHTML = words[0].substring(0, letterCount);
+      window.setTimeout(function () {
         var usedColor = colors.shift();
         colors.push(usedColor);
         var usedWord = words.shift();
         words.push(usedWord);
         x = 1;
-        target.setAttribute('style', 'color:' + colors[0])
+        target.setAttribute("style", "color:" + colors[0]);
         letterCount += x;
         waiting = false;
-      }, 1000)
+      }, 1000);
     } else if (letterCount === words[0].length + 1 && waiting === false) {
       waiting = true;
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         x = -1;
         letterCount += x;
         waiting = false;
-      }, 1000)
+      }, 1000);
     } else if (waiting === false) {
-      target.innerHTML = words[0].substring(0, letterCount)
+      target.innerHTML = words[0].substring(0, letterCount);
       letterCount += x;
     }
-  }, 120)
-  window.setInterval(function() {
+  }, 120);
+  window.setInterval(function () {
     if (visible === true) {
-      con.className = 'console-underscore hidden'
+      con.className = "console-underscore hidden";
       visible = false;
-
     } else {
-      con.className = 'console-underscore'
+      con.className = "console-underscore";
 
       visible = true;
     }
-  }, 400)
+  }, 400);
 }
 
 // ——————————————————————————————————————————————————
 // preambule animation
 // ——————————————————————————————————————————————————
-var preambuleAnimation = anime({
+function getScrollPercent() {
+  var h = document.documentElement, 
+      b = document.body,
+      st = 'scrollTop',
+      sh = 'scrollHeight'
+  return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100
+}
+const tl = anime.timeline({ autoplay: false })
+
+tl.add({
   targets: ".myname",
   width: "195%",
   easing: "cubicBezier(.25, .75, 0.43, 1.0)",
-  duration: 2500,
+  duration: 1000,
   direction: "normal",
   loop: false,
   autoplay: false,
+}).add({
+  targets: ".console-container",
+  translateX: 500,
+  easing: "cubicBezier(.25, .75, 0.43, 1.0)",
+  duration: 5000,
+  direction: "normal",
+  loop: false,
+  autoplay: false,
+}, 100);
+
+window.addEventListener('scroll', () => {
+const persentage = getScrollPercent()
+tl.seek(tl.duration * (persentage * 0.01))
 });
 
-var lastScrollTop = 0;
-window.addEventListener("scroll", function(){ 
-   var st = window.pageYOffset;
-   if (st > lastScrollTop){
-    preambuleAnimation.play(window.pageYOffset * 2);
-   }
-   lastScrollTop = st <= 0 ? 0 : st;
-}, { once: true });
+
+// ——————————————————————————————————————————————————
+// Block title animation
+// ——————————————————————————————————————————————————
+BlockID = document.getElementById("block-title-id");
+ConsoleID = document.getElementById("console-id");
+var myScrollFunc = function () {
+  var y = window.scrollY;
+  if (y >= 400) {
+    BlockID.className = "block-title show";
+    ConsoleID.className = "console-container hide"
+  } else {
+    BlockID.className = "block-title hide";
+    ConsoleID.className = "console-container show"
+  }
+};
+window.addEventListener("scroll", myScrollFunc);
+
+// ——————————————————————————————————————————————————
+// Block title animation
+// ——————————————————————————————————————————————————
+function qs(selector, all = false) {
+  return all
+    ? document.querySelectorAll(selector)
+    : document.querySelector(selector);
+}
+
+const sections = qs(".section", true);
+const timeline = qs(".timeline");
+const line = qs(".line");
+line.style.bottom = `calc(100% - 20px)`;
+let prevScrollY = window.scrollY;
+let up, down;
+let full = false;
+let set = 0;
+const targetY = window.innerHeight * 0.8;
+
+function scrollHandler(e) {
+  const { scrollY } = window;
+  up = scrollY < prevScrollY;
+  down = !up;
+  const timelineRect = timeline.getBoundingClientRect();
+  const lineRect = line.getBoundingClientRect(); // const lineHeight = lineRect.bottom - lineRect.top;
+
+  const dist = targetY - timelineRect.top;
+  console.log(dist);
+
+  if (down && !full) {
+    set = Math.max(set, dist);
+    line.style.bottom = `calc(100% - ${set}px)`;
+  }
+
+  if (dist > timeline.offsetHeight + 50 && !full) {
+    full = true;
+    line.style.bottom = `-50px`;
+  }
+
+  sections.forEach((item) => {
+    // console.log(item);
+    const rect = item.getBoundingClientRect(); //     console.log(rect);
+
+    if (rect.top + item.offsetHeight / 5 < targetY) {
+      item.classList.add("show-me");
+    }
+  }); // console.log(up, down);
+
+  prevScrollY = window.scrollY;
+}
+
+scrollHandler();
+line.style.display = "block";
+window.addEventListener("scroll", scrollHandler);
