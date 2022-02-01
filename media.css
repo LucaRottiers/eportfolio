@@ -74,9 +74,7 @@
   .page-home h2 .txt {
     font-size: 8rem;
   }
-  .padding {
-    padding: 10vh 20vw;
-  }
+
   h1 {
     font-size: 13.6rem;
     margin-bottom: 60px;
@@ -88,7 +86,6 @@
     height: 100vh;
   }
   .page > section.intro > .padding {
-    padding-right: 20vw;
     padding-top: calc(70vh);
   }
   .borders > *.right {
@@ -192,7 +189,8 @@
     margin-bottom: 80px;
   }
   .padding {
-    padding: 20vh 165px 20vh 22%;
+    padding: 20vh;
+    width: calc(50% - 2rem);
   }
   header.header .list-socials {
     right: 27.5px;
@@ -208,11 +206,5 @@
   }
   .borders > *.left {
     width: 55px;
-  }
-  .page > section.intro h1 {
-    left: 22%;
-  }
-  .page > section.intro > .padding {
-    padding-right: 22%;
   }
 }

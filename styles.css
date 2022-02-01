@@ -159,44 +159,7 @@ footer.footer .padding {
   height: 250vh;
 }
 
-.phone_portrait {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #f8f8f8;
-  z-index: 24000;
-  display: none;
-}
-
-/*--Intro with name and about me------------------------------------------------------------------------------------------------------------*/
-.block-title {
-  display: flex;                    
-  font-family: "Libre Baskerville", sans-serif;
-  font-weight: 300;
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-}
-.block-title.hide {
-  opacity: 0;
-}
-.block-title.show {
-  opacity: 1;
-}
-.block-title > * {
-  vertical-align: middle;
-}
-.block-title .mskd {
-  overflow: hidden;
-}
-
-
 /*--Home page-------------------------------------------------------------------------------------------------------------------------------*/
-.page-home h2 .txt {
-  font-size: 10rem;
-  line-height: 0.9;
-}
 .page-home .page > * {
   position: relative;
   z-index: 10;
@@ -269,7 +232,7 @@ footer.footer .padding {
 .page-home section.myname h1 .console-container {
   font-family: "Gilroy", sans-serif;
   font-size: 1em;
-  color:black;
+  color: black;
   z-index: -1;
   white-space: nowrap;
 }
@@ -280,10 +243,10 @@ footer.footer .padding {
   opacity: 1;
 }
 .page-home section.myname h1 .console-underscore {
-  display:inline-block;
-  position:relative;
-  top:-0.14em;
-  left:10px;
+  display: inline-block;
+  position: relative;
+  top: -0.14em;
+  left: 10px;
 }
 
 /*--Preambule-------------------------------------------------------------------------------------------------------------------------------*/
@@ -291,12 +254,21 @@ footer.footer .padding {
   display: flex;
 }
 .page-home section.preambule .block-title .qualities_container .qualities {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 28px;
-  color: #FAFAFA;
+  color: #fafafa;
 }
 .dud {
-  color: #FAFAFA;
+  color: #fafafa;
+}
+
+/*--Intro with qualities and about me------------------------------------------------------------------------------------------------------------*/
+.block-title {
+  display: inline-block;
+  font-weight: 300;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  visibility: hidden;
 }
 
 /*--Banner with cables----------------------------------------------------------------------------------------------------------------------*/
@@ -307,8 +279,17 @@ footer.footer .padding {
 .page-home .video-container img {
   display: block;
 }
+
+/*--Projects Title--------------------------------------------------------------------------------------------------------------------------*/
 .page-home section.projects {
   background: #f8f8f8;
+}
+.page-home h2 .txt {
+  font-size: 10rem;
+  line-height: 0.9;
+}
+.page-home h2 .txt .dot {
+  color: #6767ff;
 }
 
 /*--Timeline--------------------------------------------------------------------------------------------------------------------------------*/
@@ -321,13 +302,11 @@ footer.footer .padding {
   align-items: center;
   justify-content: center;
 }
-
-.projects .timeline {
+.projects .container .timeline {
   position: relative;
   min-height: 15rem;
 }
-
-.line {
+.projects .container .timeline .line {
   background-color: black;
   position: absolute;
   z-index: 2;
@@ -337,9 +316,8 @@ footer.footer .padding {
   bottom: -5rem;
   display: none;
 }
-
-.line::before,
-.line::after {
+.projects .container .timeline .line::before,
+.projects .container .timeline .line::after {
   background-color: var(--color-black);
   position: absolute;
   display: block;
@@ -350,12 +328,10 @@ footer.footer .padding {
   left: 50%;
   transform: translateX(-50%);
 }
-
-.line::after {
+.projects .container .timeline .line::after {
   bottom: 0;
 }
-
-.section {
+.projects .container .timeline .section {
   display: flex;
   opacity: 0;
   transform: translateX(-100%);
@@ -369,25 +345,20 @@ footer.footer .padding {
   align-items: center;
   min-height: 30rem;
 }
-
-.section h4 {
-  font-family: 'Roboto Mono', monospace;
+.projects .container .timeline .section h4 {
+  font-family: "Roboto Mono", monospace;
   font-size: 20px;
   color: #6767ff;
 }
-
-.section:nth-child(odd) {
-    flex-direction: row-reverse;
-    transform: translateX(100%);
-    text-align: left;
+.projects .container .timeline .section:nth-child(odd) {
+  flex-direction: row-reverse;
+  transform: translateX(100%);
+  text-align-last: left;
 }
-
-.section:nth-child(even) {
-  text-align: right;
+.projects .container .timeline .section:nth-child(even) {
+  text-align-last: right;
 }
-
-
-.bead {
+.projects .container .timeline .section .bead {
   position: absolute;
   display: block;
   height: 1rem;
@@ -398,12 +369,12 @@ footer.footer .padding {
   top: 25%;
   transform: translateX(-50%);
 }
-
-.content {
+.projects .container .timeline .section .content {
   width: calc(50% - 2rem);
+  text-align: justify;
+  text-justify: inter-word;
 }
-
-.show-me:nth-child(n) {
+.projects .container .timeline .show-me:nth-child(n) {
   transform: none;
   opacity: 1;
 }

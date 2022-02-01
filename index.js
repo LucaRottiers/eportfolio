@@ -167,22 +167,34 @@ tl.seek(tl.duration * (persentage * 0.01))
 // ——————————————————————————————————————————————————
 // Block title animation
 // ——————————————————————————————————————————————————
-BlockID = document.getElementById("block-title-id");
+/* BlockID = document.getElementById("block-title-id");
 ConsoleID = document.getElementById("console-id");
 var myScrollFunc = function () {
   var y = window.scrollY;
-  if (y >= 400) {
-    BlockID.className = "block-title show";
-    ConsoleID.className = "console-container hide"
-  } else {
-    BlockID.className = "block-title hide";
+  if (y < 400) {
+    BlockID.style = "opacity:0"
     ConsoleID.className = "console-container show"
+  } else {
+    BlockID.style.animation = "2s anim-lineUp ease-out"
+    ConsoleID.className = "console-container hide"
   }
 };
-window.addEventListener("scroll", myScrollFunc);
+window.addEventListener("scroll", myScrollFunc); */
+
+gsap.to(".block-title", {
+  autoAlpha: 1,
+  ease: "power1.in",
+  scrollTrigger: {
+    trigger: ".intro",
+    start: "top top",
+    end: "+=100%",
+    pin: true,
+    scrub: true
+  }
+});
 
 // ——————————————————————————————————————————————————
-// Block title animation
+// Timeline animation
 // ——————————————————————————————————————————————————
 function qs(selector, all = false) {
   return all
