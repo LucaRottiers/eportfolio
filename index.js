@@ -132,13 +132,13 @@ function consoleText(words, id, colors) {
 // preambule animation
 // ——————————————————————————————————————————————————
 function getScrollPercent() {
-  var h = document.documentElement, 
-      b = document.body,
-      st = 'scrollTop',
-      sh = 'scrollHeight'
-  return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100
+  var h = document.documentElement,
+    b = document.body,
+    st = "scrollTop",
+    sh = "scrollHeight";
+  return ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
 }
-const tl = anime.timeline({ autoplay: false })
+const tl = anime.timeline({ autoplay: false });
 
 tl.add({
   targets: ".myname",
@@ -150,7 +150,7 @@ tl.add({
   autoplay: false,
 }).add({
   targets: ".console-container",
-  translateX: 500,
+  translateX: "100%",
   easing: "cubicBezier(.25, .75, 0.43, 1.0)",
   duration: 5000,
   direction: "normal",
@@ -158,40 +158,56 @@ tl.add({
   autoplay: false,
 }, 100);
 
-window.addEventListener('scroll', () => {
-const persentage = getScrollPercent()
-tl.seek(tl.duration * (persentage * 0.01))
+window.addEventListener("scroll", () => {
+  const persentage = getScrollPercent();
+  tl.seek(tl.duration * (persentage * 0.01));
 });
 
+ScrollTrigger.create({
+  trigger: ".intro",
+  anticipatePin: 1,
+  start: "top top",
+  end: 5 * innerHeight,
+  pin: true,
+});
+ScrollTrigger.create({
+  trigger: ".video-container",
+  anticipatePin: 1,
+  start: "top top",
+  end: 5 * innerHeight,
+  pin: false,
+});
+
+gsap.delayedCall(1, () =>
+  ScrollTrigger.getAll().forEach((t) => {
+    t.refresh();
+  })
+);
 
 // ——————————————————————————————————————————————————
 // Block title animation
 // ——————————————————————————————————————————————————
-/* BlockID = document.getElementById("block-title-id");
-ConsoleID = document.getElementById("console-id");
-var myScrollFunc = function () {
-  var y = window.scrollY;
-  if (y < 400) {
-    BlockID.style = "opacity:0"
-    ConsoleID.className = "console-container show"
-  } else {
-    BlockID.style.animation = "2s anim-lineUp ease-out"
-    ConsoleID.className = "console-container hide"
-  }
-};
-window.addEventListener("scroll", myScrollFunc); */
-
-gsap.to(".block-title", {
-  autoAlpha: 1,
-  ease: "power1.in",
+const timelineBlockTitle = gsap.timeline({
   scrollTrigger: {
-    trigger: ".intro",
-    start: "top top",
-    end: "+=100%",
-    pin: true,
-    scrub: true
+    trigger: ".myname",
+    start: "120% top",
+    end: "140% top",
+    scrub: true,
   }
 });
+timelineBlockTitle.from(".block-title-text", {
+  duration: 1500,
+  y: -150,
+  autoAlpha: 0,
+  ease: Power2.easeOut,
+  stagger: 5
+}).from(".profile-picture", {
+  duration: 3000,
+  y: 150,
+  autoAlpha: 0,
+  ease: Sine.easeOut,
+  stagger: 50
+}, ">");
 
 // ——————————————————————————————————————————————————
 // Timeline animation
