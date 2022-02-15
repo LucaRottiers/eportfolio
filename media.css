@@ -82,18 +82,6 @@
   .page > section.intro > .padding {
     padding-top: calc(70vh);
   }
-  .borders > *.right {
-    width: 40px;
-  }
-  .borders > *.left {
-    width: 40px;
-  }
-  .borders > *.top {
-    height: 40px;
-  }
-  .borders > *.bottom {
-    height: 40px;
-  }
 }
 @media (max-width: 991px) {
   footer.footer .padding {
@@ -168,17 +156,5 @@
   }
   header.header .list-socials {
     right: 27.5px;
-  }
-  .borders > *.top {
-    height: 55px;
-  }
-  .borders > *.bottom {
-    height: 55px;
-  }
-  .borders > *.right {
-    width: 55px;
-  }
-  .borders > *.left {
-    width: 55px;
   }
 }

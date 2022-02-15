@@ -1,6 +1,6 @@
 :root {
   --accent-color: #6767ff;
-  --page-color: ;
+  --page-color: #f8F8F8;
   --border-color: #ffffff;
 }
 
@@ -48,7 +48,15 @@ h3 {
   margin: 0px;
   margin-bottom: 0px;
   line-height: 1.2;
-  font-size: 2.4rem;
+  font-size: 4rem;
+}
+h4 {
+  font-family: "Gilroy", sans-serif;
+  font-weight: 900;
+  margin: 0px;
+  margin-bottom: 0px;
+  line-height: 1.2;
+  font-size: clamp(1.2rem, 2.5vw, 5rem);
 }
 
 /*--Linkedn Facebook Github-----------------------------------------------------------------------------------------------------------------*/
@@ -75,6 +83,9 @@ header.header .list-socials {
 .list-socials li a .icon img {
   width: 30px;
   height: 30px;
+}
+.list-socials li a .icon img:hover {
+  transform: scale(1.2);
 }
 
 /*--Footer----------------------------------------------------------------------------------------------------------------------------------*/
@@ -115,24 +126,29 @@ footer.footer .padding {
   top: 0;
   left: 0;
   width: 100%;
+  height: clamp(40px, 3vw, 60px);
   transform-origin: top center;
 }
 .borders > *.bottom {
   bottom: 0;
   left: 0;
   width: 100%;
+  height: clamp(40px, 3vw, 60px);
   transform-origin: bottom center;
 }
 .borders > *.right {
   top: 0;
   right: 0;
+  width: clamp(40px, 3vw, 60px);
   height: 100%;
   transform-origin: right center;
 }
 .borders > *.left {
   top: 0;
   left: 0;
+  width: clamp(40px, 3vw, 60px);
   height: 100%;
+  transform-origin: left center;
 }
 .page-container {
   position: relative;
@@ -281,7 +297,6 @@ footer.footer .padding {
   font-weight: 300;
   /* background-color: red; */
 }
-
 .block-title .block-title-text {
   /* background-color: yellow;
   opacity: 0.5; */
@@ -289,25 +304,36 @@ footer.footer .padding {
 }
 .block-title .block-title-text .aboutme {
   text-align: justify;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 1vw, 2rem);
   color: var(--border-color);
 }
 .block-title .profile-picture-container {
   margin-left: 5vw;
 }
 .block-title .profile-picture-container .profile-picture {
-  height: 500px;
-  width: 500px;
+  height: clamp(150px, 25vw, 500px);
+  width: clamp(150px, 25vw, 500px);
 }
 
 
 /*--Banner with cables----------------------------------------------------------------------------------------------------------------------*/
-.page-home .video-container {
+.page-home .project-banner-container {
   background: #f8f8f8;
-  transform: translate3D(0, 0, 0);
+  background-image: url(/img/interconnection-services-scaled.jpg);
+  min-height: 500px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.page-home .video-container img {
-  display: block;
+.page-home .skills-banner-container {
+  background: #f8f8f8;
+  background-image: url(/img/istockphoto-1271408351-170667a.jpeg);
+  min-height: 500px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*--Projects Title--------------------------------------------------------------------------------------------------------------------------*/
@@ -319,7 +345,7 @@ footer.footer .padding {
   line-height: 0.9;
 }
 .page-home h2 .txt .dot {
-  color: #6767ff;
+  color: var(--accent-color);
 }
 
 /*--Timeline--------------------------------------------------------------------------------------------------------------------------------*/
@@ -375,7 +401,7 @@ footer.footer .padding {
   align-items: center;
   min-height: 30rem;
 }
-.projects .container .timeline .section h4 {
+.projects .container .timeline .section .date {
   font-family: "Roboto Mono", monospace;
   font-size: 20px;
   color: #6767ff;
@@ -401,10 +427,135 @@ footer.footer .padding {
 }
 .projects .container .timeline .section .content {
   width: calc(50% - 2rem);
+}
+.projects .container .timeline .section .content p {
   text-align: justify;
   text-justify: inter-word;
 }
 .projects .container .timeline .show-me:nth-child(n) {
   transform: none;
   opacity: 1;
+}
+
+/*--Skills Section--------------------------------------------------------------------------------------------------------------------------*/
+.page-home section.skills {
+  background: var(--page-color);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+}
+.grid > article {
+  border: 1px solid var(--page-color);
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.grid > article img {
+  max-width: 100%;
+  max-height: 300px;
+}
+.grid > article i {
+  font-size: 48px;
+  line-height: 70px;
+  height: 80px;
+  width: 80px;
+  border: 6px solid white;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  text-align: center;
+  color: white;
+  margin-top: -36px;
+}
+.grid .text {
+  padding: 16px 20px 30px;
+}
+.grid .cardbtn {
+  margin-top: 20px;
+}
+
+.barline {
+  height: 12px;
+  background: #c8d6e5;
+  border-radius: 20px;
+  margin-top: 10vh;
+}
+
+.countbar {
+  height: 12px;
+  background: var(--accent-color);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: relative;
+}
+.countbar h3 {
+  position: absolute;
+  right: -19px;
+  top: -35px;
+  background: var(--accent-color);
+  padding: 4px 6px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--border-color);
+  border-radius: 5px;
+}
+.countbar h3::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  background: var(--accent-color);
+  transform: rotate(45deg) translateX(-60%);
+}
+
+/*--Footer--------------------------------------------------------------------------------------------------------------------------*/
+div[class*=box] {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+	line-height: 50px;
+	height: 50px;
+	text-align: center;
+	width: 250px;
+	cursor: pointer;
+	color: #FFF;
+	transition: all 0.5s;
+	position: relative;
+}
+.btn::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: rgba(255,255,255,0.1);
+	transition: all 0.3s;
+}
+.btn:hover::before {
+	opacity: 0 ;
+	transform: scale(0.5,0.5);
+}
+.btn::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
+	transition: all 0.3s;
+	border: 1px solid rgba(255,255,255,0.5);
+	transform: scale(1.2,1.2);
+}
+.btn:hover::after {
+	opacity: 1;
+	transform: scale(1,1);
 }

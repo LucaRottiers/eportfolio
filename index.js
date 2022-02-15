@@ -199,15 +199,15 @@ timelineBlockTitle.from(".block-title-text", {
   duration: 1500,
   y: -150,
   autoAlpha: 0,
-  ease: Power2.easeOut,
+  ease: Power2.easeInOut,
   stagger: 5
 }).from(".profile-picture", {
   duration: 3000,
   y: 150,
   autoAlpha: 0,
-  ease: Sine.easeOut,
+  ease: Power2.easeInOut,
   stagger: 50
-}, ">");
+});
 
 // ——————————————————————————————————————————————————
 // Timeline animation
@@ -263,3 +263,56 @@ function scrollHandler(e) {
 scrollHandler();
 line.style.display = "block";
 window.addEventListener("scroll", scrollHandler);
+
+// ——————————————————————————————————————————————————
+// Parallax effect
+// ——————————————————————————————————————————————————
+(function() {
+  // Add event listener
+  document.addEventListener("mousemove", parallax);
+  const elem = document.querySelector("#parallax");
+  // Magic happens here
+  function parallax(e) {
+      let _w = window.innerWidth/2;
+      let _h = window.innerHeight/2;
+      let _mouseX = e.clientX;
+      let _mouseY = e.clientY;
+      let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+      let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+      let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+      let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+      console.log(x);
+      elem.style.backgroundPosition = x;
+  }
+})();
+
+// ——————————————————————————————————————————————————
+// Percentbar on skill card
+// ——————————————————————————————————————————————————
+let  numberPercent = document.querySelectorAll('.countbar')
+let getPercent = Array.from(numberPercent)
+
+getPercent.map((items) => {
+    let startCount = 0
+    let progressBar = () => {
+        startCount ++
+        items.innerHTML = `<h3>${startCount}%</h3>`
+        items.style.width = `${startCount}%`
+        if(startCount == items.dataset.percentnumber) {
+            clearInterval(stop)
+        }
+    }
+    let stop = setInterval(() => {
+        progressBar()
+    },25)
+})
+
+// ——————————————————————————————————————————————————
+// Back to top button
+// ——————————————————————————————————————————————————
+var btn = $('#backToTopButton');
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '600');
+});
