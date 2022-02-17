@@ -129,12 +129,6 @@
   .page > section.intro h1 {
     left: 20%;
   }
-  footer.footer {
-    padding: 0px;
-  }
-  footer.footer .padding {
-    height: 30vh;
-  }
 }
 @media (min-width: 1600px) {
   .page-home section.myname h1 {

@@ -315,7 +315,6 @@ footer.footer .padding {
   width: clamp(150px, 25vw, 500px);
 }
 
-
 /*--Banner with cables----------------------------------------------------------------------------------------------------------------------*/
 .page-home .project-banner-container {
   background: #f8f8f8;
@@ -336,28 +335,31 @@ footer.footer .padding {
   background-size: cover;
 }
 
-/*--Projects Title--------------------------------------------------------------------------------------------------------------------------*/
-.page-home section.projects {
-  background: #f8f8f8;
+/*--Cross Section--------------------------------------------------------------------------------------------------------------------------*/
+.container {
+  padding: 20rem;
+  padding-bottom: 20rem;
+  margin: 0 auto;
+  max-width: 100rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aqua;
+}
+.page-home section.skills, .page-home section.projects {
+  background: var(--page-color);
 }
 .page-home h2 .txt {
   font-size: 10rem;
   line-height: 0.9;
+  background-color: gold;
 }
 .page-home h2 .txt .dot {
   color: var(--accent-color);
 }
 
-/*--Timeline--------------------------------------------------------------------------------------------------------------------------------*/
-.projects .container {
-  padding: 2rem;
-  padding-bottom: 40rem;
-  margin: 0 auto;
-  max-width: 80rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/*--Projects Title--------------------------------------------------------------------------------------------------------------------------*/
+
 .projects .container .timeline {
   position: relative;
   min-height: 15rem;
@@ -404,7 +406,7 @@ footer.footer .padding {
 .projects .container .timeline .section .date {
   font-family: "Roboto Mono", monospace;
   font-size: 20px;
-  color: #6767ff;
+  color: var(--accent-color);
 }
 .projects .container .timeline .section:nth-child(odd) {
   flex-direction: row-reverse;
@@ -438,9 +440,6 @@ footer.footer .padding {
 }
 
 /*--Skills Section--------------------------------------------------------------------------------------------------------------------------*/
-.page-home section.skills {
-  background: var(--page-color);
-}
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -458,11 +457,11 @@ footer.footer .padding {
 }
 .grid > article i {
   font-size: 48px;
-  line-height: 70px;
+  line-height: 80px;
   height: 80px;
   width: 80px;
   border: 6px solid white;
-  border-radius: 50%;
+  border-radius: 20%;
   background-color: var(--accent-color);
   text-align: center;
   color: white;
@@ -471,25 +470,20 @@ footer.footer .padding {
 .grid .text {
   padding: 16px 20px 30px;
 }
-.grid .cardbtn {
-  margin-top: 20px;
-}
-
-.barline {
+.grid .barline {
   height: 12px;
   background: #c8d6e5;
   border-radius: 20px;
   margin-top: 10vh;
 }
-
-.countbar {
+.grid .barline .countbar {
   height: 12px;
   background: var(--accent-color);
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   position: relative;
 }
-.countbar h3 {
+.grid .barline .countbar h3 {
   position: absolute;
   right: -19px;
   top: -35px;
@@ -500,7 +494,7 @@ footer.footer .padding {
   color: var(--border-color);
   border-radius: 5px;
 }
-.countbar h3::after {
+.grid .barline .countbar h3::after {
   content: "";
   position: absolute;
   bottom: -10px;
