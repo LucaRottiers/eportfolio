@@ -144,12 +144,14 @@ tl.add({
   targets: ".myname",
   width: "195%",
   easing: "cubicBezier(.25, .75, 0.43, 1.0)",
+  duration: 1000,
   direction: "normal",
 }).add(
   {
     targets: ".console-container",
     translateX: "100vw",
     easing: "cubicBezier(.25, .75, 0.43, 1.0)",
+    duration: 5000,
     direction: "normal",
   },
   100
@@ -159,6 +161,27 @@ window.addEventListener("scroll", () => {
   const persentage = getScrollPercent();
   tl.seek(tl.duration * (persentage * 0.01));
 });
+
+ScrollTrigger.create({
+  trigger: ".intro",
+  anticipatePin: 1,
+  start: "top top",
+  end: 5 * innerHeight,
+  pin: true,
+});
+ScrollTrigger.create({
+  trigger: ".video-container",
+  anticipatePin: 1,
+  start: "top top",
+  end: 5 * innerHeight,
+  pin: false,
+});
+
+gsap.delayedCall(1, () =>
+  ScrollTrigger.getAll().forEach((t) => {
+    t.refresh();
+  })
+);
 
 // ——————————————————————————————————————————————————
 // Block title animation
@@ -209,7 +232,7 @@ function scrollHandler(e) {
   up = scrollY < prevScrollY;
   down = !up;
   const timelineRect = timeline.getBoundingClientRect();
-  const lineRect = line.getBoundingClientRect(); // const lineHeight = lineRect.bottom - lineRect.top;
+  const lineRect = line.getBoundingClientRect(); 
 
   const dist = targetY - timelineRect.top;
   console.log(dist);
@@ -225,13 +248,12 @@ function scrollHandler(e) {
   }
 
   sections.forEach((item) => {
-    // console.log(item);
-    const rect = item.getBoundingClientRect(); //     console.log(rect);
+    const rect = item.getBoundingClientRect(); 
 
     if (rect.top + item.offsetHeight / 5 < targetY) {
       item.classList.add("show-me");
     }
-  }); // console.log(up, down);
+  }); 
 
   prevScrollY = window.scrollY;
 }
@@ -312,382 +334,66 @@ btn.on("click", function (e) {
   e.preventDefault();
   $("html, body").animate({ scrollTop: 0 }, "600");
 });
-// ——————————————————————————————————————————————————
-// Soft Skills Title
-// ——————————————————————————————————————————————————
-const newParticlesPerFrame = 50;
 
-const color = (hsl, o) => {
-  return `hsla(${hsl.h | 0}, ${hsl.s}%, 100%, ${o})`;
+// ——————————————————————————————————————————————————
+// Particle animation
+// ——————————————————————————————————————————————————
+let nrOfParticles = 100
+let densityOfParticles = 700
+let lineColor = "#cccccc"
+let lineWidth = 0.5
+let movementSpeed = 6
+
+particlesJS("particles-js", {
+  particles: {
+    number: { value: nrOfParticles, density: { enable: true, value_area: densityOfParticles } },
+    size: { value: 0 },
+    line_linked: {
+      enable: true,
+      distance: 250,
+      color: lineColor,
+      opacity: 1,
+      width: lineWidth
+    },
+    move: {
+      enable: true,
+      speed: movementSpeed,
+      direction: "right",
+      random: true,
+      straight: true,
+      out_mode: "out",
+      bounce: false,
+      attract: { enable: false, rotateX: 600, rotateY: 1200 }
+    }
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: {
+      onhover: { enable: true, mode: "grab" },
+      onclick: { enable: true, mode: "push" },
+      resize: true
+    },
+    modes: {
+      grab: { distance: 400, line_linked: { opacity: 1 } },
+      bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+      repulse: { distance: 200, duration: 0.4 },
+      push: { particles_nb: 4 },
+      remove: { particles_nb: 2 }
+    }
+  },
+  retina_detect: true
+});
+var count_particles, stats, update;
+
+document.body.appendChild(stats.domElement);
+count_particles = document.querySelector(".js-count-particles");
+update = function () {
+  stats.begin();
+  stats.end();
+  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+  }
+  requestAnimationFrame(update);
 };
+requestAnimationFrame(update);
 
-class TextSparks {
-  constructor() {
-    this.opa = 0;
-    this.tick = 0;
-    this.drawCB = null;
-    this.mask = null;
-    this.canvas = window.document.querySelector("canvas");
-    this.engine = this.canvas.getContext("2d");
-
-    this.maskTick = 0;
-    this.nextMaskCb = this.nextMask.bind(this);
-    this.maskCache = [];
-
-    this.resize();
-    this.fetchData();
-    this.buildStackCache();
-
-    this.particleMap = new Map();
-  }
-
-  buildStackCache() {
-    this.maskCache = this.stack.map((stack) => {
-      return this.buildTextMask(stack.texts);
-    });
-  }
-
-  fetchData() {
-    this.stackId = -1;
-    this.stack = [...document.querySelectorAll(".soft-skills-intro-text > .soft-skills-intro-text-ul")].map((ul) => {
-      return {
-        ticks:
-          0.05 *
-          (ul.hasAttribute("data-time") ? ul.getAttribute("data-time") : 0),
-        fadeIn: ul.hasAttribute("data-fade-in")
-          ? 50 / Number(ul.getAttribute("data-fade-in"))
-          : 0,
-        fadeOut: ul.hasAttribute("data-fade-out")
-          ? 50 / Number(ul.getAttribute("data-fade-out"))
-          : 0,
-        texts: [...ul.querySelectorAll("li")].map((li) => {
-          return {
-            text: li.innerHTML.trim(),
-            hsl: {
-              h: li.hasAttribute("data-hue")
-                ? Number(li.getAttribute("data-hue"))
-                : 0,
-              s: li.hasAttribute("data-saturation")
-                ? Number(li.getAttribute("data-saturation"))
-                : 100,
-              l: li.hasAttribute("data-lightness")
-                ? Number(li.getAttribute("data-lightness"))
-                : 50,
-            },
-          };
-        }),
-      };
-    });
-  }
-
-  resize() {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-
-    this.canvas.setAttribute("width", this.width);
-    this.canvas.setAttribute("height", this.height);
-  }
-
-  buildTextMask(texts) {
-    const mask = [];
-
-    const textAll = texts.reduce((all, textStack) => {
-      return all.concat(textStack.text);
-    }, "");
-
-    const size = 0.8;
-    const width = 200;
-    const height = (width / (this.width / this.height)) | 0;
-    const baseFontSize = 20;
-
-    // const canvas = document.querySelector('#test');
-    const canvas = document.createElement("canvas");
-    const engine = canvas.getContext("2d");
-
-    canvas.setAttribute("width", width);
-    canvas.setAttribute("height", height);
-
-    const font = (size) => {
-      return `bold ${size}px Arial`;
-    };
-
-    engine.font = font(baseFontSize);
-    const m = engine.measureText(textAll);
-    const rel = m.width / (width * size);
-    const fSize = Math.min(height * 0.8, (baseFontSize / rel) | 0);
-
-    engine.font = font(fSize);
-    const fontWidth = engine.measureText(textAll).width;
-
-    engine.fillText(
-      textAll,
-      (width - fontWidth) / 2,
-      height / 2 + fSize * 0.35
-    );
-
-    let left = (width - fontWidth) / 2;
-    const bot = height / 2 + fSize * 0.35;
-
-    Object.values(texts).forEach((textStack) => {
-      engine.clearRect(0, 0, width, height);
-
-      engine.fillText(textStack.text, left, bot);
-
-      left += engine.measureText(textStack.text).width;
-
-      const data = engine.getImageData(0, 0, width, height);
-      const subStack = [];
-
-      for (let i = 0, max = data.width * data.height; i < max; i++) {
-        if (data.data[i * 4 + 3]) {
-          subStack.push({
-            x: (i % data.width) / data.width,
-            y: ((i / data.width) | 0) / data.height,
-            o: Math.random(),
-            t: Math.random(),
-          });
-        }
-      }
-
-      mask.push({
-        hsl: textStack.hsl,
-        s: subStack,
-      });
-    });
-
-    return mask;
-  }
-
-  createNewParticle() {
-    for (let i = 0; i < newParticlesPerFrame; i++) {
-      let main = (Math.random() * this.mask.length) | 0;
-      let subMask = this.mask[main];
-      let maskElement =
-        this.mask[main].s[(Math.random() * this.mask[main].s.length) | 0];
-
-      if (subMask && maskElement) {
-        let particle = {
-          x: maskElement.x,
-          y: maskElement.y,
-          hsl: subMask.hsl,
-          c: this.prepareParticle,
-        };
-
-        this.particleMap.set(particle, particle);
-      }
-    }
-  }
-
-  secLog(log, timesPerFrame) {
-    if (Math.random() < 1 / 60 / timesPerFrame) {
-      console.log(log);
-    }
-  }
-
-  clear() {
-    this.engine.fillStyle = "#6767ff";
-    this.engine.fillRect(0, 0, this.width, this.height);
-  }
-
-  randFromList(...rands) {
-    return (
-      rands.reduce((acc, rand) => {
-        return acc + rand;
-      }, 0) / rands.length
-    );
-  }
-
-  prepareParticle(particle) {
-    const r1 = Math.random();
-    const r2 = Math.random();
-    const r3 = Math.random();
-
-    const rad = r3 * Math.PI * 2;
-
-    particle.x += (-0.5 + r1) / 300;
-    particle.y += (-0.5 + r2) / 300;
-    particle.si = (1 + Math.random() * 4) | 0;
-    
-    
-
-    particle.s = 0.003 + this.randFromList(r1, r2) / 10;
-    particle.l = 0;
-
-    particle.mx = Math.cos(rad) * (particle.s / (r1 < 0.05 ? 10 : 400));
-    particle.my = Math.sin(rad) * (particle.s / (r1 < 0.05 ? 10 : 400));
-
-    particle.c = this.drawParticle;
-  }
-
-  drawParticle(particle) {
-    if (particle.l >= 1) {
-      particle.c = null;
-      return;
-    }
-
-    particle.l += particle.s;
-    particle.x += particle.mx;
-    particle.y += particle.my;
-
-    this.engine.fillStyle = color(
-      particle.hsl,
-      this.opa * Math.sin(particle.l * Math.PI)
-    );
-    this.engine.fillRect(
-      particle.x * this.width,
-      particle.y * this.height,
-      particle.si,
-      particle.si
-    );
-  }
-
-  renderParticles() {
-    this.particleMap.forEach((particle) => {
-      particle.c.call(this, particle);
-
-      if (!particle.c) {
-        this.particleMap.delete(particle);
-      }
-    });
-  }
-
-  drawStatic() {
-    let i = 0;
-    const step = 0.01;
-
-    this.mask.forEach((subMask) => {
-      subMask.s.forEach((pos) => {
-        i++;
-
-        this.engine.fillStyle = color(
-          subMask.hsl,
-          ((1 + Math.cos(pos.x * 5 * pos.y * 5 + this.tick / 10)) / 2) *
-            this.opa *
-            pos.t *
-            0.5
-        );
-        this.engine.fillRect(
-          pos.x * this.width,
-          pos.y * this.height,
-          this.width / 150,
-          this.width / 150
-        );
-
-        if (i % 2) {
-          return;
-        }
-
-        pos.o += step;
-        const opa = Math.max(0, Math.sin(pos.o * Math.PI * 2));
-        const padding = (opa * this.width) / 200;
-
-        this.engine.fillStyle = color(subMask.hsl, this.opa * opa * 0.2);
-
-        if (pos.t < 0.5) {
-          this.engine.beginPath();
-          this.engine.arc(
-            pos.x * this.width,
-            pos.y * this.height,
-            this.width / 500 + padding,
-            0,
-            Math.PI * 2
-          );
-          this.engine.fill();
-        } else {
-          this.engine.fillRect(
-            pos.x * this.width - padding,
-            pos.y * this.height - padding,
-            this.width / 150 + padding * 2,
-            this.width / 150 + padding * 2
-          );
-        }
-      });
-    });
-  }
-
-  draw() {
-    this.tick++;
-
-    this.nextMaskCb();
-    this.createNewParticle();
-    this.clear();
-
-    this.engine.globalCompositeOperation = "lighter";
-    this.drawStatic();
-    this.renderParticles();
-    this.engine.globalCompositeOperation = "source-over";
-
-    requestAnimationFrame(this.drawCB);
-  }
-
-  fadeInMask() {
-    this.opa += this.stack[this.stackId].fadeIn;
-
-    if (this.opa >= 1) {
-      this.opa = 1;
-
-      this.afterFadeIn();
-    }
-  }
-
-  afterFadeIn() {
-    this.opa = 1;
-
-    if (this.stack[this.stackId].ticks) {
-      this.maskTick = 0;
-      this.nextMaskCb = this.tickMask.bind(this);
-    } else {
-      this.nextMaskCb = () => {};
-    }
-  }
-
-  fadeOutMask() {
-    this.opa -= this.stack[this.stackId].fadeOut;
-
-    if (this.opa <= 0) {
-      this.afterFadeOut();
-    }
-  }
-
-  afterFadeOut() {
-    this.opa = 0;
-    this.nextMaskCb = this.nextMask.bind(this);
-  }
-
-  tickMask() {
-    this.maskTick++;
-
-    if (this.maskTick >= this.stack[this.stackId].ticks) {
-      if (this.stack[this.stackId].fadeOut) {
-        this.nextMaskCb = this.fadeOutMask.bind(this);
-      } else {
-        this.afterFadeOut();
-      }
-    }
-  }
-
-  nextMask() {
-    this.stackId++;
-
-    if (this.stackId >= this.stack.length) {
-      this.stackId = 0;
-    }
-
-    this.mask = this.maskCache[this.stackId];
-
-    if (this.stack[this.stackId].fadeIn) {
-      this.nextMaskCb = this.fadeInMask.bind(this);
-    } else {
-      this.opa = 1;
-      this.afterFadeIn();
-    }
-  }
-
-  run() {
-    this.drawCB = this.draw.bind(this);
-    this.drawCB();
-  }
-}
-
-const a = new TextSparks();
-a.run();

@@ -1,6 +1,6 @@
 :root {
   --accent-color: #6767ff;
-  --page-color: #f8F8F8;
+  --page-color: #f8f8f8;
   --border-color: #ffffff;
 }
 
@@ -23,7 +23,7 @@ body.loading {
 body.loading > * {
   pointer-events: none;
 }
-/*--Headings--------------------------------------------------------------------------------------------------------------------------------*/
+/*--Headings-------------------------------------------------------------------------------------------------------------------*/
 h1 {
   line-height: 0.6;
   font-family: "Gilroy", sans-serif;
@@ -59,7 +59,7 @@ h4 {
   font-size: clamp(1.2rem, 2.5vw, 5rem);
 }
 
-/*--Linkedn Facebook Github-----------------------------------------------------------------------------------------------------------------*/
+/*--Linkedn Facebook Github----------------------------------------------------------------------------------------------------*/
 header.header .list-socials {
   padding: 0px;
   margin: auto;
@@ -88,29 +88,7 @@ header.header .list-socials {
   transform: scale(1.2);
 }
 
-/*--Footer----------------------------------------------------------------------------------------------------------------------------------*/
-footer.footer {
-  position: relative;
-  display: block;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 60px 40px;
-  z-index: 0;
-  background-color: var(--accent-color);
-}
-footer.footer .padding {
-  display: flex;
-  box-align: center;
-  align-items: center;
-  box-pack: justify;
-  justify-content: space-between;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-/*--White edge borders----------------------------------------------------------------------------------------------------------------------*/
+/*--White edge borders---------------------------------------------------------------------------------------------------------*/
 .borders > * {
   position: fixed;
   z-index: 100;
@@ -152,7 +130,7 @@ footer.footer .padding {
 }
 .page-container {
   position: relative;
-  background: #f8f8f8;
+  background: var(--page-color);
   overflow: hidden;
   transition: transform 500ms cubic-bezier(1, 0, 0, 1) 0ms;
   pointer-events: all;
@@ -167,7 +145,7 @@ footer.footer .padding {
     padding 500ms cubic-bezier(1, 0, 0, 1) 0ms;
 }
 
-/*--Left side of the intro------------------------------------------------------------------------------------------------------------------*/
+/*--Left side of the intro-----------------------------------------------------------------------------------------------------*/
 .page-color {
   position: absolute;
   top: 0;
@@ -177,11 +155,11 @@ footer.footer .padding {
   z-index: -1;
 }
 .page-home .page-color {
-  background: #f8f8f8;
+  background: var(--page-color);
   left: 50%;
 }
 
-/*--Home page-------------------------------------------------------------------------------------------------------------------------------*/
+/*--Home page------------------------------------------------------------------------------------------------------------------*/
 .page-home .page > * {
   position: relative;
   z-index: 10;
@@ -201,7 +179,7 @@ footer.footer .padding {
   z-index: 2 !important;
 }
 
-/*--Scrolldown text & arrow-----------------------------------------------------------------------------------------------------------------*/
+/*--Scrolldown text & arrow----------------------------------------------------------------------------------------------------*/
 .page-home section.myname .myname-scrolldown {
   position: absolute;
   z-index: 9;
@@ -244,7 +222,7 @@ footer.footer .padding {
   }
 }
 
-/*--Luca Rottiers---------------------------------------------------------------------------------------------------------------------------*/
+/*--Luca Rottiers--------------------------------------------------------------------------------------------------------------*/
 .page-home section.myname h1 {
   top: 40%;
   display: flex;
@@ -271,7 +249,7 @@ footer.footer .padding {
   left: 10px;
 }
 
-/*--Preambule-------------------------------------------------------------------------------------------------------------------------------*/
+/*--Preambule------------------------------------------------------------------------------------------------------------------*/
 .page-home section.preambule .block-title .qualities-container {
   display: flex;
   margin: 20px;
@@ -279,27 +257,23 @@ footer.footer .padding {
 .page-home section.preambule .block-title .qualities-container .qualities {
   font-family: "Roboto Mono", monospace;
   font-size: 28px;
-  color: #fafafa;
+  color: var(--border-color);
 }
 .dud {
-  color: #fafafa;
+  color: var(--border-color);
 }
 
 
-/*--Intro with qualities and about me-------------------------------------------------------------------------------------------------------*/
+/*--Intro with qualities and about me------------------------------------------------------------------------------------------*/
 .padding {
   padding: 100px 10vw;
-  /* background-color: green; */
 }
 
 .block-title {
   display: flex;
   font-weight: 300;
-  /* background-color: red; */
 }
 .block-title .block-title-text {
-  /* background-color: yellow;
-  opacity: 0.5; */
   margin: auto;
 }
 .block-title .block-title-text .aboutme {
@@ -315,10 +289,7 @@ footer.footer .padding {
   width: clamp(150px, 25vw, 500px);
 }
 
-/*--Banner with cables----------------------------------------------------------------------------------------------------------------------*/
-
-
-/*--Cross Section--------------------------------------------------------------------------------------------------------------------------*/
+/*--Cross Section--------------------------------------------------------------------------------------------------------------*/
 .container {
   padding: 2rem;
   padding-bottom: 20rem;
@@ -339,7 +310,7 @@ footer.footer .padding {
   color: var(--accent-color);
 }
 
-/*--Projects Section--------------------------------------------------------------------------------------------------------------------------*/
+/*--Projects Section-----------------------------------------------------------------------------------------------------------*/
 .page-home .project-banner-container {
   background: var(--page-color);
   background-image: url(/img/interconnection-services-scaled.jpg);
@@ -427,7 +398,7 @@ footer.footer .padding {
   transform: none;
   opacity: 1;
 }
-/*--Soft Skills Section--------------------------------------------------------------------------------------------------------------------------*/
+/*--Soft Skills Section--------------------------------------------------------------------------------------------------------*/
 #sectionPin {
   height: 100vh;
   overflow: hidden;
@@ -439,7 +410,7 @@ footer.footer .padding {
   display: flex;
 }
 .soft-skills-intro {
-  width: 100vw;
+  width: 98vw;
   height: 100vh;
   float: left;
   background-image: url(/img/softskills.jpg);
@@ -448,22 +419,17 @@ footer.footer .padding {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.soft-skills-intro-text {
-  display:none;
-}
-canvas {
-  width:100vw;
-  height:100vh;
-  background-image: url(/img/softskills.jpg);
-}
-.soft-skills-one, .soft-skills-two, .soft-skills-three {
+.soft-skills-text-container {
   width: 100vw;
   height: 100vh;
   background-color: var(--page-color);
-  float: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  float: right;
 }
 
-/*--Skills Section--------------------------------------------------------------------------------------------------------------------------*/
+/*--Skills Section-------------------------------------------------------------------------------------------------------------*/
 .page-home .skills-banner-container {
   background: var(--page-color);
   background-image: url(/img/istockphoto-1271408351-170667a.jpeg);
@@ -537,12 +503,31 @@ canvas {
   transform: rotate(45deg) translateX(-60%);
 }
 
-/*--Footer--------------------------------------------------------------------------------------------------------------------------*/
+/*--Footer---------------------------------------------------------------------------------------------------------------------*/
+footer.footer {
+  position: relative;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 60px 40px;
+  z-index: 0;
+  background-color: var(--accent-color);
+}
+footer.footer .padding {
+  display: flex;
+  box-align: center;
+  align-items: center;
+  box-pack: justify;
+  justify-content: space-between;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 div[class*=box] {
   display: flex;
   align-items: center;
 }
-
 .btn {
 	line-height: 50px;
 	height: 50px;
@@ -561,7 +546,7 @@ div[class*=box] {
 	width: 100%;
 	height: 100%;
 	z-index: 1;
-	background-color: rgba(255,255,255,0.1);
+	background-color: #ffffff1a;
 	transition: all 0.3s;
 }
 .btn:hover::before {
@@ -578,10 +563,11 @@ div[class*=box] {
 	z-index: 1;
 	opacity: 0;
 	transition: all 0.3s;
-	border: 1px solid rgba(255,255,255,0.5);
+	border: 1px solid #ffffff80;
 	transform: scale(1.2,1.2);
 }
 .btn:hover::after {
 	opacity: 1;
 	transform: scale(1,1);
 }
+
