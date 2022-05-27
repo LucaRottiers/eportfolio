@@ -55,13 +55,7 @@ class TextScramble {
   }
 }
 
-const phrases = [
-  "Networking",
-  "Automation",
-  "Scripting",
-  "Security",
-  "Testing",
-];
+const phrases = ["Networking", "Automation", "Scripting", "Security", "Testing", "Monitoring", "Visualisation"];
 
 const el = document.querySelector(".qualities");
 const fx = new TextScramble(el);
@@ -261,48 +255,6 @@ function scrollHandler(e) {
 scrollHandler();
 line.style.display = "block";
 window.addEventListener("scroll", scrollHandler);
-
-// ——————————————————————————————————————————————————
-// Soft Skills Horizontal Scroll
-// ——————————————————————————————————————————————————
-gsap.registerPlugin(ScrollTrigger);
-
-ScrollTrigger.scrollerProxy(".soft-skills-container", {
-  getBoundingClientRect() {
-    return {
-      left: 0,
-      top: 0,
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-  },
-  pinType: document.querySelector(".soft-skills-container").style.transform
-    ? "transform"
-    : "fixed",
-});
-
-window.addEventListener("load", function () {
-  let pinBoxes = document.querySelectorAll(".pin-wrap > *");
-  let pinWrap = document.querySelector(".pin-wrap");
-  let pinWrapWidth = pinWrap.offsetWidth;
-  let horizontalScrollLength = pinWrapWidth - window.innerWidth;
-
-  // Pinning and horizontal scrolling
-  gsap.to(".pin-wrap", {
-    scrollTrigger: {
-      scrub: true,
-      trigger: "#sectionPin",
-      pin: true,
-      // anticipatePin: 1,
-      start: "top top",
-      end: "500% top",
-    },
-    x: -horizontalScrollLength,
-    ease: "none",
-  });
-
-  ScrollTrigger.refresh();
-});
 
 // ——————————————————————————————————————————————————
 // Percentbar on skill card

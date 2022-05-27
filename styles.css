@@ -299,7 +299,7 @@ header.header .list-socials {
   align-items: center;
   justify-content: center;
 }
-.page-home section.skills, .page-home section.projects {
+.page-home section.skills, .page-home section.projects, .page-home section.soft-skills {
   background: var(--page-color);
 }
 .page-home h2 .txt {
@@ -399,34 +399,14 @@ header.header .list-socials {
   opacity: 1;
 }
 /*--Soft Skills Section--------------------------------------------------------------------------------------------------------*/
-#sectionPin {
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  left: 0;
-}
-.pin-wrap {
-  height: 100vh;
-  display: flex;
-}
-.soft-skills-intro {
-  width: 98vw;
-  height: 100vh;
-  float: left;
+.page-home .soft-skills-banner-container {
+  background: var(--page-color);
   background-image: url(/img/softskills.jpg);
+  min-height: 500px; 
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.soft-skills-text-container {
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--page-color);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-  float: right;
 }
 
 /*--Skills Section-------------------------------------------------------------------------------------------------------------*/
@@ -505,15 +485,16 @@ header.header .list-socials {
 
 /*--Footer---------------------------------------------------------------------------------------------------------------------*/
 footer.footer {
-  position: relative;
   display: block;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   padding: 60px 40px;
-  z-index: 0;
   background-color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 footer.footer .padding {
   display: flex;
@@ -524,15 +505,11 @@ footer.footer .padding {
   padding-top: 0px;
   padding-bottom: 0px;
 }
-div[class*=box] {
-  display: flex;
-  align-items: center;
-}
 .btn {
 	line-height: 50px;
 	height: 50px;
 	text-align: center;
-	width: 250px;
+	width: 350px;
 	cursor: pointer;
 	color: var(--border-color);
 	transition: all 0.5s;
