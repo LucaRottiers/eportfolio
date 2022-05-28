@@ -321,7 +321,7 @@ header.header .list-socials {
 /*--Projects Section-----------------------------------------------------------------------------------------------------------*/
 .page-home .project-banner-container {
   background: var(--page-color);
-  background-image: url(/img/interconnection-services-scaled.jpg);
+  background-image: url(img/interconnection-services-scaled.jpg);
   min-height: 500px; 
   background-attachment: fixed;
   background-position: center;
@@ -413,7 +413,7 @@ header.header .list-socials {
 /*--Soft Skills Section--------------------------------------------------------------------------------------------------------*/
 .page-home .soft-skills-banner-container {
   background: var(--page-color);
-  background-image: url(/img/softskills.jpg);
+  background-image: url(img/softskills.jpg);
   min-height: 500px; 
   background-attachment: fixed;
   background-position: center;
@@ -425,7 +425,7 @@ header.header .list-socials {
 /*--Skills Section-------------------------------------------------------------------------------------------------------------*/
 .page-home .skills-banner-container {
   background: var(--page-color);
-  background-image: url(/img/istockphoto-1271408351-170667a.jpeg);
+  background-image: url(img/istockphoto-1271408351-170667a.jpeg);
   min-height: 500px; 
   background-attachment: fixed;
   background-position: center;
