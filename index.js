@@ -70,6 +70,7 @@ const next = () => {
 
 next();
 
+
 // ——————————————————————————————————————————————————
 // Name amination
 // ——————————————————————————————————————————————————
@@ -348,4 +349,3 @@ update = function () {
   requestAnimationFrame(update);
 };
 requestAnimationFrame(update);
-

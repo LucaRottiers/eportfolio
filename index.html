@@ -14,7 +14,6 @@
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="media.css">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100" rel="stylesheet">
@@ -33,8 +32,6 @@
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://kit.fontawesome.com/92c2ffff06.js" crossorigin="anonymous"></script>
-  <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
 </head>
 
 <body class="page-home loaded showMyname">
@@ -42,7 +39,8 @@
   <header class="header">
     <ul class="list-socials hidden-sm-down">
       <li>
-        <a href="https://be.linkedin.com/in/luca-rottiers" rel="external" target="_blank">
+        <a href="https://be.linkedin.com/in/luca-rottiers" rel="external" target="_blank"
+          title="Visit my LinkedIn profile">
           <i class="icon">
             <title>Linkedin</title>
             <img src="/img/LinkedIn_logo_initials.png" alt="linkedin icon">
@@ -50,7 +48,8 @@
         </a>
       </li>
       <li>
-        <a href="https://nl-nl.facebook.com/public/Luca-Rottiers" rel="external" target="_blank">
+        <a href="https://nl-nl.facebook.com/public/Luca-Rottiers" rel="external" target="_blank"
+          title="Visit my Facebook profile">
           <i class="icon">
             <title>Facebook</title>
             <img src="/img/facebooklogo.png" alt="facebook icon">
@@ -58,7 +57,7 @@
         </a>
       </li>
       <li>
-        <a href="https://github.com/LucaRottiers" rel="external" target="_blank">
+        <a href="https://github.com/LucaRottiers" rel="external" target="_blank" title="Visit my Github profile">
           <i class="icon">
             <title>Github</title>
             <img src="/img/png_github_64039.png" alt="github icon">
@@ -66,7 +65,7 @@
         </a>
       </li>
       <li>
-        <a href="https://codepen.io/lucarottiers" rel="external" target="_blank">
+        <a href="https://codepen.io/lucarottiers" rel="external" target="_blank" title="Visit my Codepen profile">
           <i class="icon">
             <title>Codepen</title>
             <img src="/img/codepenlogo.png" alt="github icon">
@@ -74,7 +73,6 @@
         </a>
       </li>
     </ul>
-
     <span class="scrolldown hidden-sm-down">
       <i class="arrow">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 17 10">
@@ -115,36 +113,28 @@
             <div class="page-color"></div>
           </section>
           <section class="preambule">
-            <div class="padding">
-              <span class="block-title">
-                <div class="block-title-text">
-                  <h3>Student System and Network Management</h3>
-
-                  <div class="qualities-container">
-                    <div class="qualities"></div>
-                  </div>
-  
-                  <div class="aboutme">
-                    Ik studeer toegepaste informatica aan HoGent en heb een grote passie voor IT.
-  
-                    Al van toen ik klein was was ik gefascineerd door computers, hoe computers werken en wat je met
-                    computers allemaal kan doen. Deze fascinatie zet ik graag verder in mijn job.
-  
-                    Één van mijn beste kwaliteiten is het feit dat ik altijd bereid ben om nieuwe dingen bij te leren en
-                    mezelf te verbeteren. Dit doe ik door niet alleen tijdens school, maar ook buiten school bezig te
-                    zijn met IT. Ik leer enorm veel bij door youtube tutorials te kijken, podcasts te luisteren of
-                    simpelweg te surfen op het internet. Daarnaast kan ik zowel zelfstandig als in team aan projecten
-                    werken, het is natuurlijk veel leuker om in team te werken omdat je dan nieuwe mensen leert kennen.
-                    Zo kende niemand van onze groep elkaar in het begin van projecten ll terwijl we elkaar nu beschouwen
-                    als goede vrienden.
-  
-                    Ik hoop dat ik later nog veel mensen leer kennen op die manier.</strong>
-                  </div>
+            <div class="block-title">
+              <div class="block-title-text">
+                <h3>Student System and Network Management</h3>
+                <div class="qualities-container">
+                  <div class="qualities"></div>
                 </div>
-                <div class="profile-picture-container">
-                  <img class="profile-picture" src="/img/profielfoto.jpg" alt="profile-picture">
+                <div class="aboutme">
+                  <p>
+                    Hi, my name is Luca and I'm a student applied computer sciences and future junior system engineer
+                    with a great passion and drive for IT.
+                  </p>
+                  <p>
+                    Ever since I was little, I have been fascinated by computers, how they work and what you can do with
+                    them. I like to continue this fascination in my job. I am not really a sporty person, but in my free
+                    time I like to listen to music and podcasts, play video games together with my friends, learn new IT
+                    skills or fiddle on a new project.
+                  </p>
                 </div>
-              </span>
+              </div>
+              <div class="profile-picture-container">
+                <img class="profile-picture" src="/img/profielfoto.jpg" alt="profile-picture">
+              </div>
             </div>
           </section>
         </div>
@@ -152,17 +142,25 @@
         <section class="projects">
           <div class="padding">
             <h2>
-              <span class="txt">
-                <span>Projects</span>
-                <span class="dot">
-                  <span>.</span>
-                </span>
+              <span>Projects</span>
+              <span class="dot">
+                <span>.</span>
               </span>
             </h2>
           </div>
           <div class="container">
             <div class="timeline">
               <div class="line"></div>
+              <div class="section">
+                <div class="bead"></div>
+                <div class="content">
+                  <div class="date">May 2022</div>
+                  <h4>Ansible role for Prometheus and Grafana</h4>
+                  <p>
+                    Created an Ansible role to install and configure Prometheus and Grafana.
+                  </p>
+                </div>
+              </div>
               <div class="section">
                 <div class="bead"></div>
                 <div class="content">
@@ -220,13 +218,16 @@
                   <div class="date">Jan 2021 - Jun 2021</div>
                   <h4>Cybersecurity penetration test</h4>
                   <p>
-                    As a group of students systemn and network management we want to focus on the growing cybersecurity 
-                    market. With this project we want to achieve a security audit using a well known method, penetration testing.
+                    As a group of students systemn and network management we want to focus on the growing cybersecurity
+                    market. With this project we want to achieve a security audit using a well known method, penetration
+                    testing.
 
                     We created a demo where an existing, known DHCP starvation attack was simulated.
 
-                    Using a Kali Linux VM which acted as a man in the middel on the network and a Kali Linux network security and
-                    hacking tool named Yersinia, we were able to gather critical and confidential information from te target device.
+                    Using a Kali Linux VM which acted as a man in the middel on the network and a Kali Linux network
+                    security and
+                    hacking tool named Yersinia, we were able to gather critical and confidential information from te
+                    target device.
                   </p>
                 </div>
               </div>
@@ -236,7 +237,7 @@
                   <div class="date">Jan 2020 - Jun 2020</div>
                   <h4>Sokoban</h4>
                   <p>
-                    Developed a game called sokoban in Java with functioning GUI. 
+                    Developed a game called sokoban in Java with functioning GUI.
                     The player can play the game, progress through levels and choose a between 3 difficulties.
                   </p>
                 </div>
@@ -244,15 +245,42 @@
             </div>
           </div>
         </section>
+        <div class="soft-skills-banner-container"></div>
+        <section class="soft-skills">
+          <div class="padding">
+            <h2>
+              <span> Soft Skills</span>
+              <span class="dot">
+                <span>.</span>
+              </span>
+            </h2>
+          </div>
+          <div class="container">
+            <div class="grid">
+              <article>
+                <div class="text">
+                  <h4>Attention to detail</h4>
+                </div>
+              </article>
+              <article>
+                <div class="text">
+                  <h4>Teamwork</h4>
+                </div>
+              </article>
+              <article>
+                <div class="text">
+                  <h4>Learn new software quickly</h4>
+                </div>
+              </article>
+            </div>
+        </section>
         <div class="skills-banner-container"></div>
         <section class="skills">
           <div class="padding">
             <h2>
-              <span class="txt">
-                <span>Skills</span>
-                <span class="dot">
-                  <span>.</span>
-                </span>
+              <span>Skills</span>
+              <span class="dot">
+                <span>.</span>
               </span>
             </h2>
           </div>
@@ -262,10 +290,11 @@
                 <img src="/img/python.jpeg" alt="python card photo">
                 <i class="fa-brands fa-python"></i>
                 <div class="text">
-                  <h3>Python Scripting</h3>
+                  <h4>Python</h4>
                   <p>
-                    Python is an interpreted high-level general-purpose programming language. Its design philosophy 
-                    emphasizes code readability with its use of significant indentation. Python can be used as a programming 
+                    Python is an interpreted high-level general-purpose programming language. Its design philosophy
+                    emphasizes code readability with its use of significant indentation. Python can be used as a
+                    programming
                     language as well as a scripting language.
                   </p>
                   <div class="barline">
@@ -279,9 +308,42 @@
                 <div class="text">
                   <h3>Ansible</h3>
                   <p>
-                    Ansible is an open-source software provisioning, configuration management, and application-deployment 
-                    tool enabling infrastructure as code. It runs on many Unix-like systems, and can configure both Unix-like 
+                    Ansible is an open-source software provisioning, configuration management, and
+                    application-deployment
+                    tool enabling infrastructure as code. It runs on many Unix-like systems, and can configure both
+                    Unix-like
                     systems as well as Microsoft Windows.
+                  </p>
+                  <div class="barline">
+                    <div class="countbar" data-percentNumber="80"></div>
+                  </div>
+                </div>
+              </article>
+              <article>
+                <img src="/img/prometheus.jpg" alt="prometheus card photo">
+                <i class="fa-brands fa-watchman-monitoring"></i>
+                <div class="text">
+                  <h3>Prometheus</h3>
+                  <p>
+                    Prometheus is a free software application used for event monitoring and alerting.
+                    It records real-time metrics in a time series database (allowing for high dimension-
+                    ality) built using a HTTP pull model, with flexible queries and real-time alerting.
+                  </p>
+                  <div class="barline">
+                    <div class="countbar" data-percentNumber="80"></div>
+                  </div>
+                </div>
+              </article>
+              <article>
+                <img src="/img/844309.jpg" alt="grafana card photo">
+                <i class="fa-solid fa-sun"></i>
+                <div class="text">
+                  <h3>Grafana</h3>
+                  <p>
+                    Grafana is a multi-platform open source analytics and interactive visualization web
+                    application. It provides charts, graphs, and alerts for the web when connected to
+                    supported data sources. End users can create complex monitoring dashboards using
+                    interactive query builders.
                   </p>
                   <div class="barline">
                     <div class="countbar" data-percentNumber="80"></div>
@@ -294,8 +356,10 @@
                 <div class="text">
                   <h3>Docker</h3>
                   <p>
-                    Docker is a set of platform as a service products that use OS-level virtualization to deliver software 
-                    in packages called containers. The service has both free and premium tiers. The software that hosts the 
+                    Docker is a set of platform as a service products that use OS-level virtualization to deliver
+                    software
+                    in packages called containers. The service has both free and premium tiers. The software that hosts
+                    the
                     containers is called Docker Engine.
                   </p>
                   <div class="barline">
@@ -309,8 +373,8 @@
                 <div class="text">
                   <h3>Windows Server</h3>
                   <p>
-                    Windows Server is a brand name for a group of server operating systems released by Microsoft. 
-                    Windows server supports enterprise-level management, data storage, applications, and communications. 
+                    Windows Server is a brand name for a group of server operating systems released by Microsoft.
+                    Windows server supports enterprise-level management, data storage, applications, and communications.
                   </p>
                   <div class="barline">
                     <div class="countbar" data-percentNumber="70"></div>
@@ -323,8 +387,9 @@
                 <div class="text">
                   <h3>Jenkins</h3>
                   <p>
-                    Jenkins is an open source automation server. It helps automate the parts of software development related 
-                    to building, testing, and deploying, facilitating continuous integration and continuous delivery. 
+                    Jenkins is an open source automation server. It helps automate the parts of software development
+                    related
+                    to building, testing, and deploying, facilitating continuous integration and continuous delivery.
                   </p>
                   <div class="barline">
                     <div class="countbar" data-percentNumber="75"></div>
@@ -336,7 +401,8 @@
                 <i class="fa-solid fa-wifi"></i>
                 <div class="text">
                   <h3>Cisco IOS</h3>
-                  <p>In computing, source code is any collection of code, possibly with comments, written using a human-readable programming language.</p>
+                  <p>In computing, source code is any collection of code, possibly with comments, written using a
+                    human-readable programming language.</p>
                   <div class="barline">
                     <div class="countbar" data-percentNumber="40"></div>
                   </div>
@@ -348,7 +414,8 @@
                 <div class="text">
                   <h3>HTML5</h3>
                   <p>
-                    CSS helps Web developers create a uniform look across several pages of a Web site. Instead of defining 
+                    CSS helps Web developers create a uniform look across several pages of a Web site. Instead of
+                    defining
                     the style of each table and each block of text within a page's HTML.
                   </p>
                   <div class="barline">
@@ -362,7 +429,8 @@
                 <div class="text">
                   <h3>CSS3</h3>
                   <p>
-                    CSS helps Web developers create a uniform look across several pages of a Web site. Instead of defining 
+                    CSS helps Web developers create a uniform look across several pages of a Web site. Instead of
+                    defining
                     the style of each table and each block of text within a page's HTML.
                   </p>
                   <div class="barline">
@@ -376,8 +444,9 @@
                 <div class="text">
                   <h3>Javascript</h3>
                   <p>
-                    JavaScript, is a programming language that is one of the core technologies of the World Wide Web, 
-                    alongside HTML and CSS. Over 97% of websites use JavaScript on the client side for web page behavior.
+                    JavaScript, is a programming language that is one of the core technologies of the World Wide Web,
+                    alongside HTML and CSS. Over 97% of websites use JavaScript on the client side for web page
+                    behavior.
                   </p>
                   <div class="barline">
                     <div class="countbar" data-percentNumber="65"></div>
@@ -406,7 +475,6 @@
 
   <script src="index.js"></script>
   <script src="animation.js"></script>
-  <script src="js/three.js"></script>
 </body>
 
 </html>
